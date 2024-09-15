@@ -13,6 +13,17 @@
     group: root
     mode: 0440
 
+- name: add .bash_aliases to Ubuntu
+  tags: always
+  ansible.builtin.copy:
+    src: .bash_aliases
+    dest: /home/serge
+    owner: serge
+    group: serge
+    mode: 0440
+  when: ansible_distribution == "Ubuntu,Debian"
+
+
 - name: add ssh key for user simone
   tags: always
   ansible.builtin.authorized_key:
